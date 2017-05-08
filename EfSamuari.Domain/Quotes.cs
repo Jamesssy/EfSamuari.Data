@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EfSamurai.Domain
+﻿namespace EfSamurai.Domain
 {
     public class Quotes
     {
