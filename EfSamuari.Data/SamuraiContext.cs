@@ -17,5 +17,12 @@ namespace EfSamurai.Data
              "Server = (localdb)\\mssqllocaldb; Database = EfSamurai; Trusted_Connection = True; ");
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            
+
+            modelBuilder.Entity<SamuraiBattle>().HasKey(samuraiBattle => new { samuraiBattle.SamuraiId, samuraiBattle.BattleId });
+        }
+
     }
 }
