@@ -7,8 +7,15 @@
 
         public virtual Samurai Samurai { get; set; }
         public int SamuraiID { get; set; }
+        public QuoteTypes QuoteType { get; set; }
 
-
+        public enum QuoteTypes
+        {
+            Lame,
+            Chessy,
+            Awsume,
+           
+        }
 
 
     }

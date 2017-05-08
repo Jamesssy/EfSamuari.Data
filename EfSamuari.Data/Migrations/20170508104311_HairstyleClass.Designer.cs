@@ -9,13 +9,26 @@ using EfSamurai.Domain;
 namespace EfSamuari.Data.Migrations
 {
     [DbContext(typeof(SamuraiContext))]
-    partial class SamuraiContextModelSnapshot : ModelSnapshot
+    [Migration("20170508104311_HairstyleClass")]
+    partial class HairstyleClass
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.1")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("EfSamurai.Domain.HairStyles", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("HairStyle");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("HairStyles");
+                });
 
             modelBuilder.Entity("EfSamurai.Domain.Quotes", b =>
                 {
@@ -42,11 +55,13 @@ namespace EfSamuari.Data.Migrations
 
                     b.Property<int>("Age");
 
-                    b.Property<int>("HairStyle");
+                    b.Property<int?>("HairStyleId");
 
                     b.Property<string>("Name");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("HairStyleId");
 
                     b.ToTable("Samurais");
                 });
@@ -57,6 +72,13 @@ namespace EfSamuari.Data.Migrations
                         .WithMany("Quotes")
                         .HasForeignKey("SamuraiID")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("EfSamurai.Domain.Samurai", b =>
+                {
+                    b.HasOne("EfSamurai.Domain.HairStyles", "HairStyle")
+                        .WithMany()
+                        .HasForeignKey("HairStyleId");
                 });
         }
     }
