@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EfSamuari.Data\EfSamuari.Data.csproj" />
+    <ProjectReference Include="..\EfSamuari.Domain\EfSamurai.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
